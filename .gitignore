@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# Personal notes and documentation — stay on this machine only
+# ---------------------------------------------------------------------------
+*.md
+docs/
+README.md
+
+# ---------------------------------------------------------------------------
+# Environment, credentials and secrets — never in the repository
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.env
+wp-config.php
+eagleeye-secrets.php
+**/eagleeye-secrets.php
+*.pem
+*.key
+*.p12
+*.sql
+*.dump
+*.wpress
+
+# ---------------------------------------------------------------------------
+# Editor and operating system
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# ---------------------------------------------------------------------------
+# Local archives, logs and builds
+# ---------------------------------------------------------------------------
+*.log
+*.zip
+*.tar.gz
+*.7z
+*.rar
+node_modules/
+vendor/
+/backups/
+/screenshots/

@@ -1,0 +1,20 @@
+/*
+Theme Name: Eagle Eye
+Theme URI: https://eagleeye.local
+Author: Eagle Eye Editorial
+Author URI: https://eagleeye.local
+Description: A premium editorial theme for the Eagle Eye news and media platform. Built for serious daily publishing with custom front page composition, category desks, breaking-news ticker, article experience and manageable advertising.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: eagleeye
+Tags: news, blog, editorial, custom-colors, custom-menu, custom-logo, featured-images, threaded-comments, translation-ready, wide-blocks
+*/
+
+/*
+ * The visual system lives in assets/css/main.css and is enqueued by inc/assets.php.
+ * This file is intentionally limited to the theme header and WordPress-required metadata.
+ */

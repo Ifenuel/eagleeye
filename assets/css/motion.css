@@ -1,0 +1,138 @@
+/* ==========================================================================
+   EAGLEEYE MOTION v1
+   Continuity between pages, media that settles, and feedback on touch.
+
+   Loaded after brand.css and refresh.css. Every rule here is an enhancement:
+   a browser that does not understand it paints the page exactly as before.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. One page becomes the next
+   The masthead and the primary navigation are named, so they stay perfectly
+   still while the content beneath them changes. Chromium 126+ and Safari 18.2+
+   run this; elsewhere the browser navigates normally with no visual cost.
+   -------------------------------------------------------------------------- */
+@view-transition {
+	navigation: auto;
+}
+
+.ee-head {
+	view-transition-name: ee-masthead;
+}
+
+.ee-nav {
+	view-transition-name: ee-primary;
+}
+
+/* The chrome is identical on both pages, so its snapshot is left untouched.
+   The result reads as one continuous publication rather than a new page
+   being painted. */
+::view-transition-group(ee-masthead),
+::view-transition-group(ee-primary),
+::view-transition-old(ee-masthead),
+::view-transition-new(ee-masthead),
+::view-transition-old(ee-primary),
+::view-transition-new(ee-primary) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+/* A crossfade rather than a slide: the section reveals already carry the
+   upward movement, and two motions at once read as jitter. */
+@keyframes ee-page-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes ee-page-out {
+	to {
+		opacity: 0;
+	}
+}
+
+::view-transition-old(root) {
+	animation: ee-page-out 0.16s linear both;
+}
+
+::view-transition-new(root) {
+	animation: ee-page-in 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* --------------------------------------------------------------------------
+   2. Media settles instead of popping
+   motion.js marks images that are still downloading and clears the mark when
+   they arrive, so a slow connection fades a picture in rather than stamping
+   it onto the page.
+   -------------------------------------------------------------------------- */
+.ee-img-ready {
+	opacity: 1;
+	transition: opacity 0.4s var(--ease, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+
+.ee-img-pending {
+	opacity: 0;
+}
+
+/* The picture leading a page is uncovered from the top down. Because it runs
+   only once the file has loaded, the curtain never opens onto an empty box. */
+@keyframes ee-curtain {
+	from {
+		clip-path: inset(0 0 96% 0);
+		transform: scale(1.04);
+	}
+
+	to {
+		clip-path: inset(0 0 0 0);
+		transform: scale(1);
+	}
+}
+
+.ee-curtain {
+	animation: ee-curtain 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* --------------------------------------------------------------------------
+   3. Touch feedback
+   Without a hover state a tap feels inert. A 1.3% press is felt but never
+   seen as a jump.
+   -------------------------------------------------------------------------- */
+@media (hover: none) {
+	.card,
+	.btn,
+	.ee-consent__btn,
+	.ee-nav__menu a {
+		transition: transform 0.14s var(--ease, ease);
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.card:active,
+	.btn:active,
+	.ee-consent__btn:active {
+		transform: scale(0.987);
+	}
+}
+
+/* --------------------------------------------------------------------------
+   4. Readers who ask for less motion get none of it
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+	}
+
+	.ee-img-ready {
+		transition: none;
+	}
+
+	.ee-curtain {
+		animation: none;
+	}
+
+	.card:active,
+	.btn:active,
+	.ee-consent__btn:active {
+		transform: none;
+	}
+}

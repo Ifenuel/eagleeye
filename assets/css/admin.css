@@ -1,0 +1,1480 @@
+/* ==========================================================================
+   EAGLEEYE — Newsroom admin
+   A branded, quieter control panel instead of stock WordPress chrome.
+   ========================================================================== */
+
+:root {
+	--ee-black: #08080a;
+	--ee-red: #e01b2f;
+	--ee-gold: #f6c21c;
+	--ee-paper: #f7f3ea;
+	--ee-ink: #1a1a1e;
+	--ee-muted: #6b665c;
+	--ee-line: #ddd6c6;
+}
+
+body.wp-admin {
+	background: var(--ee-paper);
+	color: var(--ee-ink);
+}
+
+#wpcontent,
+#wpbody-content {
+	background: var(--ee-paper);
+}
+
+#wpbody-content {
+	padding-bottom: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   Admin bar
+   -------------------------------------------------------------------------- */
+#wpadminbar {
+	background: var(--ee-black);
+	border-bottom: 2px solid var(--ee-gold);
+}
+
+#wpadminbar .ab-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticon {
+	color: #e9e4d8;
+}
+
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item {
+	background: #16161a;
+	color: var(--ee-gold);
+}
+
+#wpadminbar #wp-admin-bar-eagleeye-newsroom > .ab-item {
+	color: var(--ee-gold);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+#adminmenuback,
+#adminmenuwrap,
+#adminmenu {
+	background: var(--ee-black);
+}
+
+#adminmenuwrap::before {
+	content: "";
+	display: block;
+	height: 42px;
+	margin: 18px 16px 14px;
+	background: url("../brand/eagleeye-logo-light.png") left center / contain no-repeat;
+}
+
+#adminmenu {
+	margin-top: 0;
+}
+
+#adminmenu a {
+	color: #cfc9bc;
+}
+
+#adminmenu div.wp-menu-image::before {
+	color: #8d877b;
+}
+
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus {
+	background: #141417;
+	color: var(--ee-gold);
+}
+
+#adminmenu li.menu-top:hover div.wp-menu-image::before,
+#adminmenu li.opensub > a.menu-top div.wp-menu-image::before {
+	color: var(--ee-gold);
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu,
+#adminmenu .wp-submenu {
+	background: #121215;
+}
+
+#adminmenu .wp-submenu a {
+	color: #b9b2a4;
+}
+
+#adminmenu .wp-submenu a:hover,
+#adminmenu .wp-submenu a:focus {
+	color: var(--ee-gold);
+}
+
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head {
+	background: var(--ee-red);
+	color: #fff;
+}
+
+#adminmenu li.wp-has-current-submenu div.wp-menu-image::before {
+	color: #fff;
+}
+
+#adminmenu .wp-menu-separator {
+	background: #232327;
+}
+
+#collapse-button {
+	color: #8d877b;
+}
+
+/* --------------------------------------------------------------------------
+   Typography and surfaces
+   -------------------------------------------------------------------------- */
+.wrap h1,
+.wrap h2,
+.ee-composer h1 {
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--ee-black);
+}
+
+.wrap h1 {
+	font-size: 30px;
+	margin-bottom: 6px;
+}
+
+.wrap > p {
+	color: var(--ee-muted);
+	max-width: 760px;
+}
+
+.postbox,
+.card,
+.ee-sections__card,
+.ee-composer__box {
+	background: #fff;
+	border: 1px solid var(--ee-line);
+	border-radius: 2px;
+	box-shadow: none;
+}
+
+.postbox .postbox-header {
+	border-bottom: 1px solid var(--ee-line);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons and form controls
+   -------------------------------------------------------------------------- */
+.wp-core-ui .button-primary {
+	background: var(--ee-red);
+	border-color: var(--ee-red);
+	color: #fff;
+	text-shadow: none;
+	box-shadow: none;
+	border-radius: 2px;
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus {
+	background: var(--ee-black);
+	border-color: var(--ee-black);
+	color: var(--ee-gold);
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+	border-color: var(--ee-line);
+	border-radius: 2px;
+	color: var(--ee-ink);
+	background: #fff;
+}
+
+.wp-core-ui .button:hover {
+	border-color: var(--ee-black);
+	color: var(--ee-black);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+	border-color: var(--ee-black);
+	box-shadow: 0 0 0 2px rgba(246, 194, 28, 0.5);
+	outline: none;
+}
+
+#wpadminbar .ab-icon::before,
+#wpadminbar .ab-item::before {
+	color: #cfc9bc;
+}
+
+/* WordPress draws these icons with the Dashicons icon font. When that font is
+   blocked, slow or missing (common on iOS and some Windows setups) the
+   private-use glyphs render as empty squares. Every icon below is instead
+   drawn with an inline SVG mask, so it needs no font and can never fall back
+   to a square. The link, label and action behind each icon is unchanged. */
+#adminmenu div.wp-menu-image.dashicons-awards::before,
+#adminmenu div.wp-menu-image.dashicons-admin-post::before,
+#adminmenu div.wp-menu-image.dashicons-admin-media::before,
+#adminmenu div.wp-menu-image.dashicons-admin-page::before,
+#adminmenu div.wp-menu-image.dashicons-admin-comments::before,
+#adminmenu div.wp-menu-image.dashicons-email-alt::before,
+#adminmenu div.wp-menu-image.dashicons-admin-appearance::before,
+#adminmenu div.wp-menu-image.dashicons-admin-users::before,
+#adminmenu div.wp-menu-image.dashicons-admin-settings::before,
+#adminmenu div.wp-menu-image.dashicons-dashboard::before,
+#adminmenu div.wp-menu-image.dashicons-admin-plugins::before,
+#adminmenu div.wp-menu-image.dashicons-admin-tools::before,
+#wpadminbar #wp-admin-bar-site-name .ab-icon::before,
+#wpadminbar #wp-admin-bar-comments .ab-icon::before,
+#wpadminbar #wp-admin-bar-new-content .ab-icon::before,
+#wpadminbar #wp-admin-bar-edit .ab-icon::before {
+	content: "" !important;
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+	font: 0/0 monospace !important;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ee-ico);
+	mask-image: var(--ee-ico);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: 50% 50%;
+	mask-position: 50% 50%;
+	-webkit-mask-size: 20px 20px;
+	mask-size: 20px 20px;
+}
+
+#adminmenu div.wp-menu-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#adminmenu div.wp-menu-image.dashicons-awards { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-post { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h14v16H5z'/%3E%3Cpath d='M9 9h6M9 13h6M9 17h4'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-media { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='5' width='16' height='14' rx='1'/%3E%3Cpath d='M7 15l3-4 3 3 2-2 3 3'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-page { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h8l4 4v14H6z'/%3E%3Cpath d='M14 3v4h4'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-comments { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v10H10l-6 4z'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-email-alt { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='12' rx='1'/%3E%3Cpath d='M3 7.5l9 6 9-6'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-appearance { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20l5-1 9-9-4-4-9 9z'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-users { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Cpath d='M3 20c0-3 2.7-5 6-5s6 2 6 5'/%3E%3Cpath d='M16 5.5a3 3 0 0 1 0 5.9'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-settings { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16'/%3E%3Crect x='8' y='5' width='4' height='4'/%3E%3Crect x='14' y='10' width='4' height='4'/%3E%3Crect x='7' y='15' width='4' height='4'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-dashboard { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='7' height='7'/%3E%3Crect x='13' y='4' width='7' height='7'/%3E%3Crect x='4' y='13' width='7' height='7'/%3E%3Crect x='13' y='13' width='7' height='7'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-plugins { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 3v5M15 3v5'/%3E%3Cpath d='M6 8h12v4a6 6 0 0 1-12 0z'/%3E%3Cpath d='M12 18v3'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-tools { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 3l5 5-3 3-5-5z'/%3E%3Cpath d='M11 6L3 14v4h4l8-8'/%3E%3C/svg%3E"); }
+
+/* Catch-all: any menu entry that is not listed above still gets an SVG, so no
+   sidebar item can ever fall back to the icon font. The fallback is a plain
+   document mark. */
+#adminmenu div.wp-menu-image::before {
+	content: "" !important;
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+	font: 0/0 monospace !important;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ee-ico, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h8l4 4v14H6z'/%3E%3Cpath d='M9 10h6M9 14h6'/%3E%3C/svg%3E"));
+	mask-image: var(--ee-ico, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h8l4 4v14H6z'/%3E%3Cpath d='M9 10h6M9 14h6'/%3E%3C/svg%3E"));
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: 50% 50%;
+	mask-position: 50% 50%;
+	-webkit-mask-size: 20px 20px;
+	mask-size: 20px 20px;
+}
+
+#adminmenu div.wp-menu-image.dashicons-megaphone { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10v4l12 5V5z'/%3E%3Cpath d='M16 8a4 4 0 0 1 0 8'/%3E%3Cpath d='M6 14v5'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-links { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 14a4 4 0 0 1 0-6l2-2a4 4 0 0 1 6 6l-1 1'/%3E%3Cpath d='M14 10a4 4 0 0 1 0 6l-2 2a4 4 0 0 1-6-6l1-1'/%3E%3C/svg%3E"); }
+#adminmenu div.wp-menu-image.dashicons-admin-generic,
+#adminmenu div.wp-menu-image.dashicons-admin-collapse { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1'/%3E%3C/svg%3E"); }
+
+/* Collapse-menu control at the foot of the sidebar. */
+#collapse-button { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 6l-6 6 6 6'/%3E%3C/svg%3E"); }
+#collapse-button .collapse-button-icon::before {
+	content: "" !important;
+	display: block;
+	width: 20px;
+	height: 20px;
+	font: 0/0 monospace !important;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ee-ico);
+	mask-image: var(--ee-ico);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: 50% 50%;
+	mask-position: 50% 50%;
+	-webkit-mask-size: 20px 20px;
+	mask-size: 20px 20px;
+}
+
+/* Mobile drawer button in the admin bar (this is the square people tap on a
+   phone to open the menu). */
+#wpadminbar #wp-admin-bar-menu-toggle { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16'/%3E%3C/svg%3E"); }
+#wpadminbar #wp-admin-bar-menu-toggle .ab-icon::before {
+	content: "" !important;
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 0 auto;
+	font: 0/0 monospace !important;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ee-ico);
+	mask-image: var(--ee-ico);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: 50% 50%;
+	mask-position: 50% 50%;
+	-webkit-mask-size: 24px 24px;
+	mask-size: 24px 24px;
+}
+
+#wpadminbar #wp-admin-bar-site-name .ab-icon { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-7 9 7'/%3E%3Cpath d='M6 10v10h12V10'/%3E%3C/svg%3E"); }
+#wpadminbar #wp-admin-bar-comments .ab-icon { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v10H10l-6 4z'/%3E%3C/svg%3E"); }
+#wpadminbar #wp-admin-bar-new-content .ab-icon { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E"); }
+#wpadminbar #wp-admin-bar-edit .ab-icon { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h4L19 9l-4-4L4 16z'/%3E%3C/svg%3E"); }
+
+/* Command palette is drawn by WordPress with the same icon font, so it gets
+   the same treatment and cannot fall back to a square. */
+#wpadminbar #wp-admin-bar-command-palette .ab-icon::before {
+	content: "" !important;
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+	font: 0/0 monospace !important;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ee-ico);
+	mask-image: var(--ee-ico);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: 50% 50%;
+	mask-position: 50% 50%;
+	-webkit-mask-size: 20px 20px;
+	mask-size: 20px 20px;
+}
+
+#wpadminbar #wp-admin-bar-command-palette .ab-icon { --ee-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M16 16l5 5'/%3E%3C/svg%3E"); }
+
+/* --------------------------------------------------------------------------
+   Newsroom overview
+   -------------------------------------------------------------------------- */
+.ee-hello {
+	margin: 26px 0 6px;
+	font-size: 13px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ee-muted);
+}
+
+.ee-dash {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 14px;
+	max-width: 1180px;
+	margin: 22px 0;
+}
+
+.ee-dash__stat {
+	background: #fff;
+	border: 1px solid var(--ee-line);
+	border-left: 4px solid var(--ee-gold);
+	padding: 16px 18px;
+}
+
+.ee-dash__stat span {
+	display: block;
+	font-size: 10.5px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--ee-muted);
+}
+
+.ee-dash__stat strong {
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 36px;
+	line-height: 1.05;
+	color: var(--ee-black);
+	margin: 6px 0 2px;
+}
+
+.ee-dash__stat em {
+	font-style: normal;
+	font-size: 12px;
+	color: #8d877b;
+}
+
+.ee-dash__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 16px;
+	max-width: 1180px;
+}
+
+.ee-quick {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 14px;
+	max-width: 1180px;
+	margin: 18px 0 30px;
+}
+
+.ee-quick a {
+	display: block;
+	background: var(--ee-black);
+	color: #fff;
+	padding: 20px 22px;
+	border-left: 4px solid var(--ee-gold);
+	text-decoration: none;
+	transition: background 0.2s, border-color 0.2s;
+}
+
+.ee-quick a:hover {
+	background: #1b1b20;
+	border-left-color: var(--ee-red);
+	color: var(--ee-gold);
+}
+
+.ee-quick strong {
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 19px;
+	margin-bottom: 4px;
+}
+
+.ee-quick span {
+	font-size: 12px;
+	color: #a8a294;
+}
+
+/* --------------------------------------------------------------------------
+   Composer
+   -------------------------------------------------------------------------- */
+.ee-composer__intro {
+	max-width: 720px;
+	font-size: 14px;
+}
+
+.ee-composer__form {
+	max-width: 1180px;
+}
+
+.ee-composer__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 320px;
+	gap: 28px;
+	align-items: start;
+	margin-top: 18px;
+}
+
+.ee-composer__label {
+	display: block;
+	margin: 18px 0 7px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--ee-muted);
+}
+
+.ee-composer__title {
+	width: 100%;
+	padding: 14px 16px !important;
+	font-family: Georgia, serif !important;
+	font-size: 26px !important;
+	line-height: 1.2;
+}
+
+.ee-composer textarea {
+	width: 100%;
+	padding: 10px 12px;
+	font-size: 14px;
+}
+
+.ee-composer__box {
+	padding: 18px;
+	margin-bottom: 16px;
+}
+
+.ee-composer__box .ee-composer__label {
+	margin-top: 0;
+}
+
+.ee-composer__box--muted {
+	background: #fbf8f0;
+}
+
+.ee-composer__box--muted strong {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.ee-composer__box--muted ul {
+	margin: 0;
+	padding-left: 18px;
+	list-style: disc;
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--ee-muted);
+}
+
+.ee-composer__select {
+	width: 100%;
+	max-width: 100%;
+}
+
+.ee-composer__check {
+	display: flex;
+	gap: 9px;
+	align-items: flex-start;
+	margin-top: 14px;
+	font-size: 13px;
+	line-height: 1.45;
+	color: var(--ee-ink);
+}
+
+.ee-composer__actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.ee-composer__actions .button {
+	padding: 4px 16px;
+	height: auto;
+	line-height: 2.2;
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+.ee-sections__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 16px;
+	max-width: 1180px;
+	margin-top: 22px;
+}
+
+.ee-sections__card {
+	position: relative;
+	padding: 20px;
+}
+
+.ee-sections__count {
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	font-family: Georgia, serif;
+	font-size: 28px;
+	color: #d9d2c2;
+}
+
+.ee-sections__card h2 {
+	margin: 0 0 6px;
+	font-family: Georgia, serif;
+	font-size: 21px;
+}
+
+.ee-sections__card p {
+	margin: 0 0 14px;
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--ee-muted);
+	min-height: 40px;
+}
+
+.ee-sections__actions {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+	.ee-composer__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Newsroom page head, guide and shortcuts
+   -------------------------------------------------------------------------- */
+.ee-page-head {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
+	margin: 18px 0 2px;
+}
+
+.ee-page-head h1 {
+	margin: 0;
+	font-size: 34px;
+}
+
+.ee-page-head__sub {
+	margin: 6px 0 0 !important;
+	color: var(--ee-muted);
+	font-size: 14px;
+}
+
+.ee-page-head__actions {
+	display: flex;
+	gap: 8px;
+	margin: 0 !important;
+	flex-wrap: wrap;
+}
+
+.ee-shortcuts {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.ee-guide {
+	display: grid;
+	grid-template-columns: 300px minmax(0, 1fr);
+	gap: 10px 30px;
+	background: var(--ee-black);
+	border-left: 5px solid var(--ee-gold);
+	padding: 26px 30px;
+	max-width: 1180px;
+	margin: 6px 0 26px;
+}
+
+.ee-guide__intro span {
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--ee-gold);
+}
+
+.ee-guide__intro h2 {
+	margin: 8px 0 8px !important;
+	font-family: Georgia, serif;
+	font-size: 24px;
+	line-height: 1.2;
+	color: #fff;
+}
+
+.ee-guide__intro p {
+	margin: 0;
+	color: #a8a294;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+.ee-guide__steps {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: ee-guide;
+}
+
+.ee-guide__steps li {
+	counter-increment: ee-guide;
+	border-left: 1px solid #2b2b31;
+	padding-left: 14px;
+}
+
+.ee-guide__steps li::before {
+	content: "0" counter(ee-guide);
+	display: block;
+	margin-bottom: 4px;
+	font-family: Georgia, serif;
+	font-size: 20px;
+	color: var(--ee-red);
+}
+
+.ee-guide__steps strong {
+	display: block;
+	color: #fff;
+	font-family: Georgia, serif;
+	font-size: 16px;
+	margin-bottom: 3px;
+}
+
+.ee-guide__steps span {
+	display: block;
+	color: #a8a294;
+	font-size: 12.5px;
+	line-height: 1.5;
+}
+
+.ee-guide__cta {
+	grid-column: 2;
+	margin: 4px 0 0 !important;
+}
+
+.ee-guide__cta .button-primary {
+	background: var(--ee-gold);
+	border-color: var(--ee-gold);
+	color: var(--ee-black);
+}
+
+.ee-guide__cta .button-primary:hover {
+	background: #fff;
+	border-color: #fff;
+	color: var(--ee-black);
+}
+
+@media (max-width: 1100px) {
+	.ee-guide {
+		grid-template-columns: 1fr;
+	}
+
+	.ee-guide__cta {
+		grid-column: 1;
+	}
+
+	.ee-guide__steps {
+		grid-template-columns: 1fr;
+	}
+
+	.ee-guide__steps li {
+		border-left: 0;
+		border-top: 1px solid #2b2b31;
+		padding: 10px 0 0;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Morning Brief panel
+   -------------------------------------------------------------------------- */
+.ee-brief {
+	max-width: 1180px;
+	margin: 18px 0 34px;
+	padding: 24px 26px;
+	background: #fff;
+	border: 1px solid var(--ee-line);
+	border-top: 4px solid var(--ee-gold);
+}
+
+.ee-brief__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 18px;
+}
+
+.ee-brief__head h2 {
+	margin: 0 !important;
+	font-family: Georgia, serif;
+	font-size: 23px;
+}
+
+.ee-brief__head p {
+	margin: 6px 0 0;
+	max-width: 680px;
+	color: var(--ee-muted);
+	font-size: 13px;
+	line-height: 1.55;
+}
+
+.ee-brief__badge {
+	flex: 0 0 auto;
+	padding: 6px 10px;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.ee-brief__badge.is-on {
+	background: #e8f5ec;
+	color: #0a7d33;
+}
+
+.ee-brief__badge.is-off {
+	background: #f6e9e9;
+	color: var(--ee-red);
+}
+
+.ee-brief__facts {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	margin: 20px 0;
+	padding: 16px 0;
+	border-top: 1px solid var(--ee-line);
+	border-bottom: 1px solid var(--ee-line);
+}
+
+.ee-brief__facts span {
+	display: block;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--ee-muted);
+}
+
+.ee-brief__facts strong {
+	display: block;
+	margin: 4px 0 2px;
+	font-family: Georgia, serif;
+	font-size: 18px;
+	color: var(--ee-black);
+}
+
+.ee-brief__facts em {
+	font-style: normal;
+	font-size: 12px;
+	color: #8d877b;
+}
+
+.ee-brief__actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.ee-brief__actions form {
+	margin: 0;
+}
+
+.ee-brief__link {
+	font-size: 12px;
+	color: var(--ee-red);
+	font-weight: 600;
+}
+
+.ee-brief__settings {
+	max-width: 760px;
+	padding: 18px 20px;
+	background: #fbf8f0;
+	border: 1px solid var(--ee-line);
+}
+
+.ee-brief__toggle {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+
+.ee-brief__row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 14px;
+	font-size: 13px;
+}
+
+.ee-brief__row select {
+	min-width: 110px;
+}
+
+.ee-brief__row .description {
+	flex-basis: 100%;
+	margin: 0;
+	color: var(--ee-muted);
+}
+
+.ee-brief__label {
+	display: block;
+	margin-bottom: 6px;
+	font-family: Arial, sans-serif;
+	font-size: 10.5px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ee-muted);
+}
+
+@media (max-width: 900px) {
+	.ee-brief__facts {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar polish
+   -------------------------------------------------------------------------- */
+#adminmenuwrap::before {
+	height: 34px;
+	margin: 12px 18px 10px;
+}
+
+#adminmenu a.menu-top {
+	font-size: 14px;
+}
+
+#adminmenu .wp-submenu a {
+	font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Readability pass — stronger ink, larger interface text
+   -------------------------------------------------------------------------- */
+body.wp-admin {
+	font-size: 14px;
+	color: #1a1a1e;
+}
+
+#wpbody-content .wrap,
+#wpbody-content .wrap p,
+#wpbody-content .wrap li,
+#wpbody-content .wrap td,
+#wpbody-content .wrap th {
+	color: #26262c;
+}
+
+.wrap > p,
+.wrap .description,
+.ee-composer__intro,
+.postbox .inside {
+	color: #3f3a32;
+}
+
+.ee-hello {
+	color: #3f3a32;
+	font-size: 12px;
+	letter-spacing: 0.12em;
+}
+
+.ee-dash__stat span {
+	color: #3f3a32;
+	font-size: 11px;
+}
+
+.ee-dash__stat em {
+	color: #4f4a41;
+}
+
+.ee-dash__stat strong {
+	color: #08080a;
+}
+
+.ee-composer__label {
+	color: #3f3a32;
+	font-size: 11.5px;
+}
+
+.ee-composer__box--muted ul {
+	color: #3f3a32;
+}
+
+#adminmenu a,
+#adminmenu a.menu-top {
+	color: #f2eee5;
+}
+
+#adminmenu .wp-submenu a {
+	color: #ded8cc;
+}
+
+#adminmenu div.wp-menu-image::before {
+	color: #bdb6a8;
+}
+
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+	color: #fff;
+}
+
+#wpadminbar .ab-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label {
+	color: #f2eee5;
+}
+
+.widefat th,
+.widefat td {
+	font-size: 13.5px;
+	color: #1a1a1e;
+}
+
+.widefat thead th {
+	color: #26262c;
+	font-weight: 700;
+}
+
+.ee-brief__head p,
+.ee-brief__facts span,
+.ee-brief__facts em {
+	color: #3f3a32;
+}
+
+.ee-brief__facts strong {
+	color: #08080a;
+}
+
+.ee-guide__intro p,
+.ee-guide__steps span {
+	color: #c9c3b6;
+}
+
+/* Editor: make the publishing panel unmistakable. */
+.postbox .postbox-header h2,
+#submitdiv h2 {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+#publishing-action .button-primary {
+	font-size: 14px;
+	height: 38px;
+	padding: 0 16px;
+}
+
+/* Composer media picker and schedule fields */
+.ee-media {
+	margin: 0 0 8px;
+}
+
+.ee-media__preview img {
+	display: block;
+	width: 100%;
+	max-width: 520px;
+	height: auto;
+	border: 1px solid var(--ee-line);
+	background: #fff;
+}
+
+.ee-media__actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 10px 0 6px;
+}
+
+.ee-composer input[type="datetime-local"],
+.ee-composer input#ee_tags {
+	width: 100%;
+	max-width: 100%;
+	padding: 9px 11px;
+	border: 1px solid #8c877b;
+	border-radius: 2px;
+	background: #fff;
+	color: #08080a;
+	font-size: 14px;
+}
+
+.ee-composer .description {
+	display: block;
+	margin: 5px 0 0;
+	color: #4f4a41;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+/* Keep the sidebar mark compact so it never collides with the admin bar. */
+#adminmenuwrap::before {
+	height: 28px;
+	margin: 14px 22px 12px;
+	background-size: contain;
+}
+
+#adminmenu {
+	margin-top: 4px;
+}
+
+/* The guide sits on black, so it needs its own light ink regardless of the
+   general wrap paragraph colour above. */
+#wpbody-content .ee-guide p,
+#wpbody-content .ee-guide span {
+	color: #d6d0c3;
+}
+
+#wpbody-content .ee-guide h2,
+#wpbody-content .ee-guide strong {
+	color: #fff;
+}
+
+#wpbody-content .ee-guide .ee-guide__intro > span {
+	color: var(--ee-gold);
+}
+
+/* Primary actions must stay red and unmistakable across WordPress screens. */
+.wp-core-ui .button.button-primary,
+.wp-core-ui .button-primary,
+.wp-core-ui .button-primary:focus {
+	background: var(--ee-red) !important;
+	border-color: var(--ee-red) !important;
+	color: #fff !important;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+.wp-core-ui .button.button-primary:hover,
+.wp-core-ui .button-primary:hover {
+	background: var(--ee-black) !important;
+	border-color: var(--ee-black) !important;
+	color: var(--ee-gold) !important;
+}
+
+/* Space the schedule and tag fields away from the checkboxes above. */
+.ee-composer__box label[for="ee_date"],
+.ee-composer__box label[for="ee_tags"] {
+	margin-top: 18px;
+}
+
+#wpbody-content .ee-brief .button-primary {
+	background: var(--ee-red) !important;
+	border-color: var(--ee-red) !important;
+	color: #fff !important;
+}
+
+/* Classic editor toolbar icons normally come from the TinyMCE webfont. iOS
+   Safari can fall back to empty squares, so provide CSS-drawn controls. */
+.ee-composer .mce-toolbar .mce-ico {
+	position: relative;
+	font-size: 0 !important;
+	color: transparent !important;
+}
+
+.ee-composer .mce-toolbar .mce-ico::before {
+	position: absolute;
+	inset: 0;
+	color: #3f454b;
+	font: 700 16px/20px Arial, sans-serif;
+	text-align: center;
+}
+
+.ee-composer .mce-i-bold::before { content: "B"; }
+.ee-composer .mce-i-italic::before { content: "I"; font-style: italic; }
+.ee-composer .mce-i-bullist::before { content: "•"; }
+.ee-composer .mce-i-numlist::before { content: "1."; }
+.ee-composer .mce-i-blockquote::before { content: "❝"; }
+.ee-composer .mce-i-alignleft::before { content: "≡"; text-align: left; }
+.ee-composer .mce-i-aligncenter::before { content: "≡"; }
+.ee-composer .mce-i-alignright::before { content: "≡"; text-align: right; }
+.ee-composer .mce-i-link::before { content: "↗"; }
+.ee-composer .mce-i-wp_more::before { content: "↵"; }
+.ee-composer .mce-i-fullscreen::before { content: "⛶"; }
+.ee-composer .mce-i-wp_adv::before { content: "···"; }
+
+.ee-composer--simple #ee_content-html {
+	display: none !important;
+}
+
+.ee-composer--simple #qt_ee_content_toolbar {
+	display: none !important;
+}
+
+.ee-composer--simple #ee_content-tmce {
+	float: none;
+}
+
+/* Keep toolbar controls large enough to tap on phones, and avoid sideways
+   overflow from the classic editor's fixed-width toolbar. */
+@media (max-width: 782px) {
+	#wpcontent,
+	#wpbody-content {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	#wpbody-content .wrap {
+		margin-right: 12px;
+	}
+
+	.ee-composer__grid,
+	.ee-composer__main,
+	.ee-composer__side,
+	#wp-content-wrap,
+	#wp-content-editor-container,
+	#wp-content-editor-container .mce-tinymce {
+		min-width: 0;
+		max-width: 100%;
+	}
+
+	#wp-content-wrap .mce-toolbar .mce-btn {
+		min-width: 38px;
+		min-height: 38px;
+	}
+
+	#wp-content-wrap .mce-toolbar .mce-btn button {
+		min-width: 38px;
+		min-height: 38px;
+	}
+
+	#wp-content-wrap .mce-toolbar .mce-ico {
+		margin: 9px;
+	}
+
+	#wp-content-wrap .mce-toolbar-grp {
+		white-space: normal;
+	}
+}
+
+/* Restore each alignment symbol's actual alignment instead of using one
+   generic glyph treatment. */
+.mce-i-alignleft::before { display: block; text-align: left; }
+.mce-i-aligncenter::before { display: block; text-align: center; }
+.mce-i-alignright::before { display: block; text-align: right; }
+
+/* Sidebar mark: the eye emblem plus a legible wordmark, instead of shrinking
+   the full lockup into an unreadable strip. */
+#adminmenuwrap::before {
+	height: 38px;
+	margin: 14px 18px 4px;
+	background: url("../img/logo-mark.png") left center / 36px 36px no-repeat;
+}
+
+#adminmenuwrap::after {
+	content: "EAGLE EYE";
+	display: block;
+	margin: 0 18px 12px 0;
+	color: var(--ee-gold);
+	font-family: Arial, sans-serif;
+	font-size: 10.5px;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+/* Final sidebar lockup: emblem and wordmark on one line at the top. */
+#adminmenuwrap::before {
+	content: "EAGLE EYE";
+	display: block;
+	height: 36px;
+	margin: 14px 18px 12px;
+	padding-left: 48px;
+	background: url("../img/logo-mark.png") left center / 36px 36px no-repeat;
+	color: var(--ee-gold);
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	line-height: 36px;
+	white-space: nowrap;
+}
+
+#adminmenuwrap::after {
+	content: none;
+	display: none;
+}
+
+.wp-core-ui .button-primary:disabled,
+.wp-core-ui .button-primary[disabled] {
+	background: #b9b2a4 !important;
+	border-color: #b9b2a4 !important;
+	color: #fff !important;
+	cursor: not-allowed;
+}
+
+/* Subscriber list header: one count above, one export action here. */
+.ee-subscribers-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	max-width: 900px;
+	margin: 28px 0 6px;
+}
+
+.ee-subscribers-head h2 {
+	margin: 0;
+}
+
+.ee-subscribers-head {
+	flex-wrap: wrap;
+}
+/* ==========================================================================
+   Final admin polish — full supplied wordmark, modern interface type,
+   and a dashboard that holds together on smaller laptop screens.
+   ========================================================================== */
+
+#adminmenuwrap::before {
+	content: "";
+	display: block;
+	height: 66px;
+	margin: 16px 12px 8px;
+	background: #f7f3ea url("../img/logo-mark.png") center / 82% auto no-repeat;
+	border-top: 3px solid var(--ee-gold);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+#adminmenuwrap::after {
+	content: none;
+	display: none;
+}
+
+body.folded #adminmenuwrap::before {
+	width: 36px;
+	height: 36px;
+	margin: 12px 0;
+	background: var(--ee-black) url("../img/logo-mark.png") center / 30px 30px no-repeat;
+	border: 0;
+	box-shadow: none;
+}
+
+.wrap h1,
+.ee-page-head h1,
+.ee-dash__stat strong,
+.ee-quick strong,
+.ee-guide__intro h2,
+.ee-guide__steps strong,
+.ee-sections__card h2,
+.ee-composer__title,
+.ee-composer h1 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
+	letter-spacing: -0.025em;
+}
+
+.ee-page-head h1 {
+	font-size: clamp(28px, 3.2vw, 38px);
+	line-height: 1.05;
+}
+
+.ee-page-head {
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--ee-line);
+}
+
+.ee-dash__stat {
+	border-radius: 2px;
+	box-shadow: 0 1px 0 rgba(8, 8, 10, 0.03);
+}
+
+.ee-dash__stat strong {
+	font-size: 40px;
+	letter-spacing: -0.04em;
+}
+
+.ee-quick a {
+	border-radius: 2px;
+	box-shadow: 0 16px 28px -24px rgba(8, 8, 10, 0.8);
+}
+
+.ee-quick strong {
+	letter-spacing: -0.02em;
+}
+
+.ee-guide {
+	border-radius: 2px;
+	box-shadow: 0 24px 50px -38px rgba(8, 8, 10, 0.65);
+}
+
+.ee-guide__intro h2 {
+	letter-spacing: -0.025em;
+}
+
+.ee-sections__card {
+	background: #fff;
+	border: 1px solid var(--ee-line);
+	box-shadow: 0 1px 0 rgba(8, 8, 10, 0.03);
+}
+
+.ee-sections__count {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
+
+.ee-brief {
+	border-radius: 2px;
+}
+
+@media (max-width: 1100px) {
+	.ee-quick,
+	.ee-dash {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.ee-dash__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 782px) {
+	.ee-page-head {
+		align-items: flex-start;
+	}
+
+	.ee-page-head__actions {
+		width: 100%;
+	}
+
+	.ee-page-head__actions .button {
+		flex: 1;
+		text-align: center;
+	}
+
+	.ee-quick,
+	.ee-dash {
+		grid-template-columns: 1fr;
+	}
+
+	.ee-guide {
+		padding: 22px 20px;
+	}
+
+	.ee-dash__stat strong {
+		font-size: 34px;
+	}
+
+	#wpbody-content {
+		padding-right: 14px;
+	}
+}
+
+/* WordPress auto-folds the sidebar below 960px. Show the emblem, not a
+   clipped wordmark; above that, keep the full supplied lockup. */
+@media (max-width: 960px) {
+	#adminmenuwrap::before {
+		width: 36px;
+		height: 36px;
+		margin: 12px 0;
+		background: var(--ee-black) url("../img/logo-mark.png") center / 30px 30px no-repeat;
+		border: 0;
+		box-shadow: none;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Profile screen
+
+   This page exists so a writer can set their photo. On a phone the stock
+   "Personal Options" block (colour schemes, editor shortcuts, toolbar toggle)
+   filled the first screens, so the photo looked like it was on another page.
+   It is hidden for anyone without administrator rights.
+   -------------------------------------------------------------------------- */
+body.ee-newsroom-simple .user-admin-color-wrap,
+body.ee-newsroom-simple .user-rich-editing-wrap,
+body.ee-newsroom-simple .user-syntax-highlighting-wrap,
+body.ee-newsroom-simple .user-comment-shortcuts-wrap,
+body.ee-newsroom-simple .user-admin-bar-front-wrap,
+body.ee-newsroom-simple .user-infinite-scrolling-wrap,
+body.ee-newsroom-simple .user-language-wrap {
+	display: none;
+}
+
+body.ee-newsroom-simple #your-profile > h2:first-of-type,
+body.ee-newsroom-simple #your-profile > table.form-table:first-of-type {
+	display: none;
+}
+
+#ee-photo-pick {
+	margin-bottom: 4px;
+}
+
+#ee-photo-remove {
+	margin-left: 10px;
+	color: #b3242f;
+}
